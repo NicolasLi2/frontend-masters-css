@@ -9,8 +9,6 @@
 body {
   font-family: 'Open Sans', sans-serif;
   padding: 5vmin;
-  background-color: var(--primary-color);
-  color: var(--not-found, white);
 }
 
 a {
@@ -33,15 +31,23 @@ ul {
 .ball {
   height: 5vmin;
   width: 5vmin;
+  left: 50vw;
   border-radius: 50%;
-  background: radial-gradient(circle at bottom right, #fb2324, #fe932a);
+  background: red;
   animation: slide-right var(--duration) var(--easing) infinite;
-}
-@keyframes slide-right {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(50vw);
+  transition-property: background, transform;
+  // transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: linear, ease-in-out;
+
+  // transition: all    2s         0.5s       ease-in-out;
+  //                  duration     delay      timing-function
+
+  &:hover {
+    padding: 3rem;
+    transition-delay: 0.5s;
+    transition-duration: 1s, 3s;
+    background: blue;
+    transform: scale(2);
   }
 }
