@@ -42,14 +42,16 @@ ul {
 
   --duration: 1s;
   --stagger: 0.5s;
-  animation: move-right var(--duration) both;
+  --interval: calc(var(--duration) - var(--stagger));
+  // animation: move-right var(--duration) both;
+  // &:nth-child(2) {
+  //   animation-delay: calc(var(--duration) - var(--stagger));
+  // }
+  // &:nth-child(3) {
+  //   animation-delay: calc(var(--duration) * 2 - var(--stagger) * 2);
+  // }
 
-  &:nth-child(2) {
-    animation-delay: calc(var(--duration) - var(--stagger));
-  }
-  &:nth-child(3) {
-    animation-delay: calc(var(--duration) * 2 - var(--stagger) * 2);
-  }
+  animation: move-right var(--duration) calc(var(--interval) * var(--i)) both;
 }
 @keyframes move-like-a-square {
   // 0%,
