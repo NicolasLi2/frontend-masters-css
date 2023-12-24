@@ -34,20 +34,42 @@ ul {
   left: 50vw;
   border-radius: 50%;
   background: red;
-  animation: slide-right var(--duration) var(--easing) infinite;
-  transition-property: background, transform;
-  // transition-property: all;
-  transition-duration: 0.5s;
-  transition-timing-function: linear, ease-in-out;
+  animation-name: move-like-a-square, red-to-green;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes move-like-a-square {
+  // 0%,
+  // 100% {
+  //   transform: none;
+  // }
+  from,
+  to {
+    transform: none;
+  }
+  25% {
+    // animation-timing-function: linear;
+    transform: translateX(20vw);
+  }
+  50% {
+    transform: translateX(20vw) translateY(20vw);
+  }
+  75% {
+    transform: translateX(0) translateY(20vw);
+  }
+  // 100% {
+  //   // transform: translateY(-20vw);
+  //   transform: none;
+  // }
+}
 
-  // transition: all    2s         0.5s       ease-in-out;
-  //                  duration     delay      timing-function
-
-  &:hover {
-    padding: 3rem;
-    transition-delay: 0.5s;
-    transition-duration: 1s, 3s;
-    background: blue;
-    transform: scale(2);
+@keyframes red-to-green {
+  from {
+    background: red;
+  }
+  to {
+    background: green;
   }
 }
