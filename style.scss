@@ -11,12 +11,26 @@ body {
   padding: 5vmin;
 }
 
+#app {
+  --opacity: 1;
+  --bg: white;
+
+  &[data-state='loading'] {
+    --bg: orange;
+  }
+  &[data-state='success'] {
+    --bg: green;
+  }
+  background: var(--bg);
+}
+
 a {
   color: blue;
 }
 
 h1 {
   margin: 0;
+  opacity: var(--opacity);
 }
 
 small {
@@ -93,5 +107,24 @@ ul {
   }
   to {
     transform: translateX(25vw);
+  }
+}
+
+.button {
+  appearance: none;
+  background: blue;
+  color: white;
+  font-weight: bold;
+  padding: 2rem 3rem;
+  border: none;
+  transition: all 0.3s;
+
+  &:hover {
+    opacity: 0.5;
+  }
+  &:active {
+    transition-duration: 0.15s;
+    transform: translateY(20%);
+    opacity: 1;
   }
 }

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="style.scss" />
   </head>
   <body>
+    <!-- <div id="app" data-state="loading"> -->
     <div id="app">
       <small>Frontend Masters</small>
       <h1>CSS Animation Workshop</h1>
@@ -34,6 +35,36 @@
         <div class="ball" style="--i: 3"></div>
         <div class="ball" style="--i: 4"></div>
       </div>
+      <button class="button">Click me</button>
     </div>
   </body>
+  <script>
+    const appEl = document.querySelector('#app');
+    const buttonEl = document.querySelector('button');
+
+    const machine = {
+      initial: 'start',
+      states: {
+        start: {
+          on: { CLICK: 'loading' },
+        },
+        loading: {
+          on: { CLICK: 'success' },
+        },
+        success: {
+          on: { CLICK: 'loading' },
+        },
+      },
+    };
+
+    // buttonEl.addEventListener('click', () => {
+    //   appEl.dataset.state = appEl.dataset.state === 'loading' ? '' : 'loading';
+    // });
+    buttonEl.addEventListener('click', () => {
+      const currentState = appEl.dataset.state ?? machine.initial;
+      const nextState = machine.states[currentState].on.CLICK ?? currentState;
+
+      appEl.dataset.state = nextState;
+    });
+  </script>
 </html>
